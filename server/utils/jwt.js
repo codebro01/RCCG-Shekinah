@@ -10,7 +10,8 @@ export const attachCookieToResponse = (res, {user}) =>{
     res.cookie('token', generatedToken, {
         httpOnly: true, 
         expires: new Date( Date.now() + _5h), 
-        secure: process.env.NODE_ENV === 'production', 
+        secure: false, 
+        // secure: process.env.NODE_ENV === 'production', 
         signed: true, 
         // sameSite: 'Strict'
     })
