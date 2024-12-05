@@ -13,6 +13,6 @@ export const attachCookieToResponse = (res, {user}) =>{
         // secure: false, 
         secure: process.env.NODE_ENV === 'production', 
         signed: true, 
-        sameSite: 'Lax',
+        sameSite: 'None',
     })
 }
