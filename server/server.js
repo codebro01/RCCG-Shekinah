@@ -17,6 +17,8 @@ const app = express();
 
 //! middlewares 
 const __dirname = fileURLToPath(import.meta.url);
+
+
 app.use(cookieParser(process.env.JWT_SECRET))
 // app.use(express.urlencoded({ extended: true }))
 app.use(express.static(join(__dirname, "..", "..", "dist")));
@@ -38,6 +40,7 @@ app.use(cors({
     credentials: true,
 }))
 
+app.options('*', cors());
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/event', authMiddleware, eventRouter);
