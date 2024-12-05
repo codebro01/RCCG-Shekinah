@@ -40,8 +40,6 @@ app.use(cors({
     credentials: true,
 }))
 
-app.options('*', cors());
-
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/event', authMiddleware, eventRouter);
 app.use('/api/v1/post', authMiddleware, blogRouter);
