@@ -23,9 +23,17 @@ app.use(express.static(join(__dirname, "..", "..", "dist")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigin = ['http://localhost:5173', 'https://rccg-shekinah-api.onrender.com'];
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://rccg-shekinah-api.onrender.com'],
+    origin: (origin, callback) => {
+        if(!origin || allowedOrigin.includes(origin)) {
+            callback(null, true)
+        }
+        else {
+            callback(new Error('Not allowed by CORS......'))
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
 }))
