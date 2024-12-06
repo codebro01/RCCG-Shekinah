@@ -25,7 +25,7 @@ app.use(express.static(join(__dirname, "..", "..", "dist")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigin = ['http://localhost:5173', 'https://rccg-shekinah-api.onrender.com', 'https://stalwart-cendol-286f7d.netlify.app'];
+const allowedOrigin = ['https://rccgshekinah.netlify.app', 'https://rccg-shekinah-api.onrender.com', 'http://localhost:5173'];
 
 app.use(cors({
     origin: (origin, callback) => {
