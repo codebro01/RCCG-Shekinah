@@ -4,7 +4,6 @@ import { StatusCodes } from 'http-status-codes';
 import { createTokenUser } from '../utils/createTokenUser.js';
 import { attachCookieToResponse } from '../utils/jwt.js';
 export const registerController = async (req, res, next) => {
-    await User.deleteMany({});
     const { username, email, password } = req.body;
 
     // const requiredFields = ['username', 'password', 'email'];

@@ -15,9 +15,9 @@ const UserSchema = new Schema({
         }
     },
     password: {
-        type: String,
-        required: [true, 'Please provide password'],
-        match: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/, 'Password must contain at least 5 Characters that includes, uppercase, lowercase, number and special characters'],
+        type: Number,
+        required: [true, 'Please provide password and password must include only numbers'],
+        // match: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/, 'Password must contain at least 5 Characters that includes, uppercase, lowercase, number and special characters'],
         minlength: [6, "Password must be more than 5 characters"],
     },
     role: {
