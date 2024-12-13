@@ -2,12 +2,16 @@ import { StatusCodes } from "http-status-codes";
 import { Event } from "../model/eventModel.js";
 import {User} from "../model/userModel.js";
 import { BadRequestError, NotFoundError} from "../errors/index.js";
-import { cloudinaryImageUploader } from "../utils/index.js";
+import { cloudinaryImageUploader, pagePaginationHelper } from "../utils/index.js";
 import { checkPermissions } from "../middlewares/authenticationMiddleware.js";
 
 
 export const getAllEvents = async (req, res) => {
-    const events = await Event.find({}).sort('-createdAt');
+
+    
+    const {skip, limit} = pagePaginationHelper(req.query.page, req.query.limit);
+    const events = await Event.find({}).sort('-createdAt').skip(skip).limit(limit);
+
     res.status(StatusCodes.OK).json({ events });
 }
 
@@ -40,7 +44,8 @@ export const updateEvent = async (req, res, next) => {
     const event = await Event.findById({ _id: eventID });
     if (!event) return next(new NotFoundError('Event not found'));
     const updateEvent = await Event.findOneAndUpdate({_id: event._id, createdBy: userID}, {...req.body}, {new: true, runValidators: true})
-    res.status(StatusCodes.OK).json({ event: updateEvent })
+    res.status(StatusCodes.OK).json({ event: updateEvent });
+
 
 }
 

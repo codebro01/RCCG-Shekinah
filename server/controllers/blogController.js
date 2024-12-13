@@ -1,6 +1,6 @@
 import { Blog } from "../model/blogModel.js";
 
-import { cloudinaryImageUploader } from "../utils/index.js";
+import { cloudinaryImageUploader, pagePaginationHelper } from "../utils/index.js";
 import { User } from "../model/userModel.js"
 import { checkPermissions } from "../middlewares/authenticationMiddleware.js";
 import { BadRequestError, NotFoundError } from "../errors/index.js";
@@ -22,7 +22,8 @@ const getSinglePost = async (req, res, next) => {
 
 
 const getAllPosts = async (req, res) => {
-    const posts = await Blog.find({}).sort('-createdAt');
+    const {skip, limit} = pagePaginationHelper(req.query.page, req.query.limit);
+    const posts = await Blog.find({}).sort('-createdAt').skip(skip).limit(limit);
     res.status(StatusCodes.OK).json({ posts })
 }
 

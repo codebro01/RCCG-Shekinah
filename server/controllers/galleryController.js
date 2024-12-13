@@ -1,12 +1,14 @@
 import { Gallery } from "../model/galleryModel.js";
 import { StatusCodes } from 'http-status-codes';
-import { cloudinaryImageUploader } from "../utils/index.js";
+import { cloudinaryImageUploader, pagePaginationHelper } from "../utils/index.js";
 import { NotFoundError } from '../errors/index.js';
 import cloudinary from '../config/cloudinary.js';
 
 
 export const getAllImages = async (req, res) => {
-    const gallery = await Gallery.find({}).sort('-createdAt');
+    const {skip, limit} = pagePaginationHelper(req.query.page, req.query.limit);
+
+    const gallery = await Gallery.find({}).sort('-createdAt').skip(skip).limit(limit);
     res.status(StatusCodes.CREATED).json({ gallery })
 }
 

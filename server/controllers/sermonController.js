@@ -1,5 +1,5 @@
 import { Sermon } from "../model/sermonModel.js";
-import { cloudinary_Image_Audio_Uploader} from '../utils/index.js'
+import { cloudinary_Image_Audio_Uploader, pagePaginationHelper} from '../utils/index.js'
 import { StatusCodes } from "http-status-codes";
 import { BadRequestError, NotFoundError } from "../errors/index.js";
 
@@ -7,7 +7,8 @@ export const uploadSermon = async (req, res, next) => {
     cloudinary_Image_Audio_Uploader(req, res, next, { Coll: Sermon })
 }
 export const getAllSermons = async (req, res) => {
-    const sermons = await Sermon.find({}).sort('-createdAt');
+    const {skip, limit} = pagePaginationHelper(req.query.page, req.query.limit);
+    const sermons = await Sermon.find({}).sort('-createdAt').skip(skip).limit(limit);
 
     res.status(StatusCodes.OK).json({ sermons })
 }
