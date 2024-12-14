@@ -10,7 +10,7 @@ export const getAllEvents = async (req, res) => {
 
     
     const {skip, pageLimit} = pagePaginationHelper(req.query.page, req.query.limit);
-    const events = await Event.find({}).sort('-createdAt').skip(skip).limit(limit);
+    const events = await Event.find({}).sort('-createdAt').skip(skip).limit(pageLimit);
 
     res.status(StatusCodes.OK).json({ events });
 }

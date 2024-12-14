@@ -8,7 +8,7 @@ export const uploadSermon = async (req, res, next) => {
 }
 export const getAllSermons = async (req, res) => {
     const {skip, pageLimit} = pagePaginationHelper(req.query.page, req.query.limit);
-    const sermons = await Sermon.find({}).sort('-createdAt').skip(skip).limit(limit);
+    const sermons = await Sermon.find({}).sort('-createdAt').skip(skip).limit(pageLimit);
 
     res.status(StatusCodes.OK).json({ sermons })
 }
