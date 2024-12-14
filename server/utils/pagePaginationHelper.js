@@ -3,5 +3,5 @@ export const pagePaginationHelper = (page, limit) => {
     const pageLimit = parseInt(limit) || 5;
     const skip = (pageNumber - 1) * pageLimit;
 
-    return {limit, skip};
+    return {pageLimit, skip};
 }
