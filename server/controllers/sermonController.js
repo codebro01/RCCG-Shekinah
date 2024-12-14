@@ -7,7 +7,7 @@ export const uploadSermon = async (req, res, next) => {
     cloudinary_Image_Audio_Uploader(req, res, next, { Coll: Sermon })
 }
 export const getAllSermons = async (req, res) => {
-    const {skip, limit} = pagePaginationHelper(req.query.page, req.query.limit);
+    const {skip, pageLimit} = pagePaginationHelper(req.query.page, req.query.limit);
     const sermons = await Sermon.find({}).sort('-createdAt').skip(skip).limit(limit);
 
     res.status(StatusCodes.OK).json({ sermons })

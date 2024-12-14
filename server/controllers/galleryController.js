@@ -6,7 +6,7 @@ import cloudinary from '../config/cloudinary.js';
 
 
 export const getAllImages = async (req, res) => {
-    const {skip, limit} = pagePaginationHelper(req.query.page, req.query.limit);
+    const {skip, pageLimit} = pagePaginationHelper(req.query.page, req.query.limit);
 
     const gallery = await Gallery.find({}).sort('-createdAt').skip(skip).limit(limit);
     res.status(StatusCodes.CREATED).json({ gallery })

@@ -22,7 +22,7 @@ const getSinglePost = async (req, res, next) => {
 
 
 const getAllPosts = async (req, res) => {
-    const {skip, limit} = pagePaginationHelper(req.query.page, req.query.limit);
+    const {skip, pageLimit} = pagePaginationHelper(req.query.page, req.query.limit);
     const posts = await Blog.find({}).sort('-createdAt').skip(skip).limit(limit);
     res.status(StatusCodes.OK).json({ posts })
 }
