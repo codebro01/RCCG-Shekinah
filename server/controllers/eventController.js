@@ -8,7 +8,7 @@ import { checkPermissions } from "../middlewares/authenticationMiddleware.js";
 
 export const getAllEvents = async (req, res) => {
 
-    
+    console.log(req.query.page)
     const {skip, pageLimit} = pagePaginationHelper(req.query.page, req.query.limit);
     const events = await Event.find({}).sort('-createdAt').skip(skip).limit(pageLimit);
 
