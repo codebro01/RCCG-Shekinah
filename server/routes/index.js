@@ -6,4 +6,5 @@ import authRouter from './authRouter.js';
 import imagesRouter from './galleryRouter.js';
 import adminHomeRouter from './adminHomeRouter.js';
 import allDataRouter from './allDataRouter.js';
-export {authRouter, eventRouter, userRouter, blogRouter, sermonRouter, imagesRouter, adminHomeRouter, allDataRouter}
+import newsletterEmailRouter from './newsletterEmailRouter.js'
+export { authRouter, eventRouter, userRouter, blogRouter, sermonRouter, imagesRouter, adminHomeRouter, allDataRouter, newsletterEmailRouter }

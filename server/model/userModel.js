@@ -5,13 +5,16 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: [true, 'username is required'],
+        unique: true,
     },
     email: {
         type: String,
         required: [true, 'email is required'],
         validate: {
             validator: validator.isEmail,
-            message: 'Please provide a valid email'
+            message: 'Please provide a valid email',
+            unique: true,
+
         }
     },
     password: {

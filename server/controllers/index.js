@@ -5,8 +5,9 @@ import {loginController, registerController, logoutController} from './authContr
 import { uploadSermon, getAllSermons, getSingleSermon, updateSermon, deleteSermon } from "./sermonController.js";
 import { getAllImages, uploadImages,deleteImage} from "./galleryController.js";
 import { allDataController } from "./allDataController.js";
+import { getAllNewsletterSubscribers, subscribeToNewsletter } from "./newsletterEmailController.js";
 
 
 
 
-export {createEventController,getAllUsers, getSingleUser, updateInfo,updatePwd, getCurrentUser, loginController, registerController, logoutController, getSingleEvent, getAllEvents, updateEvent, deleteEvent, createPost, getSinglePost, getAllPosts, updatePost, deletePost, uploadSermon, getAllSermons, getSingleSermon, updateSermon, deleteSermon, getAllImages, uploadImages, deleteImage, allDataController}
+export { createEventController, getAllUsers, getSingleUser, updateInfo, updatePwd, getCurrentUser, loginController, registerController, logoutController, getSingleEvent, getAllEvents, updateEvent, deleteEvent, createPost, getSinglePost, getAllPosts, updatePost, deletePost, uploadSermon, getAllSermons, getSingleSermon, updateSermon, deleteSermon, getAllImages, uploadImages, deleteImage, allDataController, getAllNewsletterSubscribers, subscribeToNewsletter }

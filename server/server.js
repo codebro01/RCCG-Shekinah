@@ -5,7 +5,7 @@ import { connectDB } from './DB/connectDB.js';
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url';
 import { notFound } from './middlewares/notFoundMiddleware.js';
-import { eventRouter, userRouter, authRouter, blogRouter, sermonRouter, imagesRouter, adminHomeRouter, allDataRouter } from './routes/index.js';
+import { eventRouter, userRouter, authRouter, blogRouter, sermonRouter, imagesRouter, adminHomeRouter, allDataRouter, newsletterEmailRouter } from './routes/index.js';
 import cookieParser from 'cookie-parser';
 import { authMiddleware } from './middlewares/authenticationMiddleware.js';
 import { customErrorHandler } from './middlewares/errorMiddleware.js';
@@ -47,6 +47,7 @@ app.use('/api/v1/sermon', authMiddleware, sermonRouter);
 app.use('/api/v1/images', authMiddleware, imagesRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/admin-home', authMiddleware, adminHomeRouter);
+app.use('/api/v1/email-newsletter', newsletterEmailRouter);
 app.use('/api/v1/alldata', allDataRouter);
 
 
